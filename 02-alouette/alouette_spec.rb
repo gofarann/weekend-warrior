@@ -101,28 +101,28 @@ A-a-a-ah
     end
   end
 
-#   describe "sing" do
-#     # Load the canonical lyrics from disk
-#     let(:expected_lyrics) do
-#       File.read(File.dirname(__FILE__) + '/alouette_lyrics.txt').strip
-#     end
-#
-#     it "returns a string" do
-#
-#       Alouette.sing.must_be_kind_of String
-#     end
-#
-#     it "begins and ends with the refrain" do
-#
-#       song = Alouette.sing
-#       refrain = "Alouette, gentille alouette,\nAlouette, je te plumerai."
-#       song.start_with?(refrain + "\n\n").must_equal true, "Song didn't begin with the refrain"
-#       song.end_with?("\n\n" + refrain).must_equal true, "Song didn't end with the refrain"
-#     end
-#
-#     it "generates the full lyrics" do
-#
-#       Alouette.sing.must_equal expected_lyrics
-#     end
-#   end
+  describe "sing" do
+    # Load the canonical lyrics from disk
+    let(:expected_lyrics) do
+      File.read(File.dirname(__FILE__) + '/alouette_lyrics.txt').strip
+    end
+
+    it "returns a string" do
+
+      Alouette.sing.must_be_kind_of String
+    end
+
+    it "begins and ends with the refrain" do
+
+      song = Alouette.sing
+      refrain = "Alouette, gentille alouette,\nAlouette, je te plumerai."
+      song.start_with?(refrain + "\n\n").must_equal true, "Song didn't begin with the refrain"
+      song.end_with?("\n\n" + refrain).must_equal true, "Song didn't end with the refrain"
+    end
+
+    it "generates the full lyrics" do
+
+      Alouette.sing.must_equal expected_lyrics
+    end
+  end
 end

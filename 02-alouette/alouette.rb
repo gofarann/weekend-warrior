@@ -3,7 +3,7 @@ class Alouette
   class << self
     attr_accessor :lines_for_verse, :la_snippet, :je_snippet , :lines_for_verse
 
-    @@la_snippet =
+    @@la_snippet = # could be constant
     [ "la tête!",
       "le bec!",
       "les yeux!",
@@ -13,12 +13,7 @@ class Alouette
       "la queue!",
       "le dos!"]
 
-
-
       @@je_snippet = "Je te plumerai "
-
-
-
 
       def lines_for_verse(verse_number)
         @@lines_for_verse = []
@@ -32,49 +27,48 @@ class Alouette
         end
 
         return @@lines_for_verse
-
       end
 
       def verse(verse_number)
-
         verse = []
 
         verse << ("Je te plumerai" + " " + "#{@@la_snippet[verse_number]}").delete!('!') + "."
         verse << ("Je te plumerai" + " " + "#{@@la_snippet[verse_number]}").delete!('!') + "."
 
-
         Alouette.lines_for_verse(verse_number).each do |phrase|
           verse << "#{phrase}"
           verse << "#{phrase}"
-
         end
 
         verse <<  "Alouette!\n" +
         "Alouette!\n" +
         "A-a-a-ah"
 
-
         return verse.join("\n")
       end
 
       def sing
+        song = []
         verse_number = 0
 
         8.times do
-          puts "Alouette, gentille alouette,\n" +
-          "Alouette, je te plumerai." +
-          "\n"
+          song << "Alouette, gentille alouette,"
+          song << "Alouette, je te plumerai.\n"
 
-          puts Alouette.verse(verse_number)
+          song <<  "#{Alouette.verse(verse_number)}\n"
           verse_number += 1
         end
-        puts "Alouette, gentille alouette,\n"+
-        "Alouette, je te plumerai.\n"
+
+        song <<  "Alouette, gentille alouette,"
+        song << "Alouette, je te plumerai."
+
+        return song.join("\n")
+
       end
-    end
 
   end
+end
 
   # Alouette.sing.class
-  puts Alouette.verse(2)
+  # puts Alouette.verse(2)
   # puts Alouette.sing

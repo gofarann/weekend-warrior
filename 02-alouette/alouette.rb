@@ -1,7 +1,7 @@
 class Alouette
 
   class << self
-    attr_accessor :lines_for_verse, :la_snippet, :je_snippet, :refrain , :lines_for_verse
+    attr_accessor :lines_for_verse, :la_snippet, :je_snippet , :lines_for_verse
 
     @@la_snippet =
     [ "la tête!",
@@ -13,16 +13,11 @@ class Alouette
       "la queue!",
       "le dos!"]
 
-      @@alouette_snippet = [
-        "Alouette!",
-        "Alouette!",
-        "A-a-a-ah"
-      ]
+
 
       @@je_snippet = "Je te plumerai "
 
-      @@refrain = ["Alouette, gentille alouette",
-        "Alouette, je te plumerai.\n"]
+
 
 
         def lines_for_verse(verse_number)
@@ -42,35 +37,44 @@ class Alouette
 
         def verse(verse_number)
 
-          puts ("Je te plumerai" + " " + "#{@@la_snippet[verse_number]}")
-          puts ("Je te plumerai" + " " + "#{@@la_snippet[verse_number]}")
+          verse = []
 
-          Alouette.lines_for_verse(verse_number).each do |phrase|
-            puts "#{phrase}\n" * 2
+          verse << ("Je te plumerai" + " " + "#{@@la_snippet[verse_number]}")
+          verse << ("Je te plumerai" + " " + "#{@@la_snippet[verse_number]}")
+
+
+           Alouette.lines_for_verse(verse_number).each do |phrase|
+            verse << "#{phrase}"
+            verse << "#{phrase}"
+
           end
 
-          puts @@alouette_snippet
+          verse <<  "Alouette!\n" +
+          "Alouette!\n" +
+          "A-a-a-ah\n"
 
 
+return verse.join("\n")
         end
 
         def sing
           verse_number = 0
 
           8.times do
-            puts "Alouette, gentille alouette,"
-            puts "Alouette, je te plumerai."
-            puts "\n"
+            puts "Alouette, gentille alouette,\n" +
+            "Alouette, je te plumerai." +
+            "\n"
 
             puts Alouette.verse(verse_number)
             verse_number += 1
           end
-          puts "Alouette, gentille alouette,"
-          puts "Alouette, je te plumerai.\n"
+          puts "Alouette, gentille alouette,\n"+
+          "Alouette, je te plumerai.\n"
         end
       end
 
     end
 
     # Alouette.sing.class
-    puts Alouette.verse(3).class
+    puts Alouette.verse(2)
+    # puts Alouette.sing
